@@ -1,2 +1,22 @@
 #this is an empty work flow file to test the workflow trigger on pull request
-test
+name: 
+
+on:
+  push:
+  pull_request:
+    branches:
+      branches: [develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v6
+      
+      - name: setup node.js
+        uses: actions/setup-node@v6
+        with: 
+          node-version: 24
+          cache: 'npm'
